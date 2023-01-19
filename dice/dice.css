@@ -1,0 +1,120 @@
+/* Root */
+:root {
+    /* TU PEUX TOUCHER */
+
+    /* Datas */
+    --tranparent: 0.8;                              /* Transparent => (0.8), Pas transparent => (1) */
+    --edge-size: 200px;                             /* Taille des arrêtes */
+    --border-size: 0.5px;                           /* Taille des bordures */
+
+    /* Colors */
+    --face-color: rgba(54, 54, 53, var(--tranparent));
+    --dot-color: white;
+    --border-color: black;
+
+    /* PAS TOUCHE */
+
+    /* Face */
+    --distance: calc(var(--edge-size) / 2);
+
+    /* Dot */
+    --proportional: 6.9;
+    --prop-gap: 32.4;
+    --dot-gap: calc(var(--edge-size) / var(--prop-gap));
+    --dot-size: calc(var(--edge-size) / var(--proportional));
+
+    /* Pos */
+
+    --middle: calc(var(--edge-size) / 2 - var(--dot-size) / 2);
+    --top_left: calc(var(--middle) - var(--dot-gap) - var(--dot-size));
+    --down_right: calc(var(--middle) + var(--dot-gap) + var(--dot-size));
+}
+
+#dice {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    background-color: #595A4A;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dices-container > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    height: 300px;
+    width: 200px;
+    cursor: pointer;
+
+    perspective: 1000px;
+    perspective-origin: 50% 32%;
+}
+
+.dice {
+    width: var(--edge-size);
+    height: var(--edge-size);
+
+    transform-style: preserve-3d;
+}
+
+.dice > div {
+    position: absolute;
+    
+    width: var(--edge-size);
+    height: var(--edge-size);
+
+    background: var(--face-color);
+    border: var(--border-size) solid var(--border-color);
+}
+
+.dot {
+    position: absolute;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    background: var(--dot-color);
+    border-radius: 50%;  
+}
+
+/* Position des faces */
+
+.dice .front { transform: translateZ(var(--distance)); }
+.dice .back { transform: rotateX(-180deg) translateZ(var(--distance)); }
+.dice .right { transform: rotateY(90deg) translateZ(var(--distance)); }
+.dice .left { transform: rotateY(-90deg) translateZ(var(--distance)); }
+.dice .top { transform: rotateX(90deg) translateZ(var(--distance)); }
+.dice .bottom { transform: rotateX(-90deg) translateZ(var(--distance)); }
+
+/* Positions des points */
+.front .dot1 { top: var(--middle); left: var(--middle); }
+
+.top .dot1 { top: var(--top_left); left: var(--top_left); }
+.top .dot2 { top: var(--down_right); left: var(--down_right); }
+
+.left .dot1 { top: var(--top_left); left: var(--top_left); }
+.left .dot2 { top: var(--middle); left: var(--middle); }
+.left .dot3 { top: var(--down_right); left: var(--down_right); }
+
+.right .dot1 { top: var(--top_left); left: var(--top_left); }
+.right .dot2 { top: var(--down_right); left: var(--top_left); }
+.right .dot3 { top: var(--top_left); left: var(--down_right); }
+.right .dot4 { top: var(--down_right); left: var(--down_right); }
+
+.bottom .dot1 { top: var(--top_left); left: var(--top_left); }
+.bottom .dot2 { top: var(--down_right); left: var(--top_left); }
+.bottom .dot3 { top: var(--middle); left: var(--middle); }
+.bottom .dot4 { top: var(--top_left); left: var(--down_right); }
+.bottom .dot5 { top: var(--down_right); left: var(--down_right); }
+
+.back .dot1 { top: var(--top_left); left: var(--top_left); }
+.back .dot2 { top: var(--middle); left: var(--top_left); }
+.back .dot3 { top: var(--down_right); left: var(--top_left); }
+.back .dot4 { top: var(--top_left); left: var(--down_right); }
+.back .dot5 { top: var(--middle); left: var(--down_right); }
+.back .dot6 { top: var(--down_right); left: var(--down_right); }

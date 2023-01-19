@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dice</title>
+
+    <link rel="stylesheet" href="./dice/dice.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    <div id="content">
+        <div id="header">
+            <h1>Dès interactif</h1>
+            <h3>Si vous swiper vers le haut le dès va rouler par rapport à la force que vous aller mettre</h3>
+            <div>
+                <label for="dice-size">Taille du dès (entre 50px et 500px):</label>
+                <input type="range" id="dice-size" name="dice-size" min="50" max="500" value="200">
+            </div>
+        </div>
+        <div id="container"></div>
+    </div>
+
+    <script src="./dice/dice.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>
