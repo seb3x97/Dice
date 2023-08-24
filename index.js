@@ -3,7 +3,6 @@
 const dice = new Dice(document.getElementById("container"));
 dice.onroll = function(number) {
   	dice.reset();
-  	alert(`Nombre: ${number}`);
 };
 
 

@@ -43,13 +43,9 @@ function getRandom(min, max) {
  */
  function checkArrayIndex(index, length) {
   //Si l'index est plus petit que 0
-  if(index < 0) {
-    index = length + index;
-  }
+  if(index < 0) return length + index;
   //Si l'index est plus grand ou égual à la taille de l'array
-  else if(index >= length) {
-    index = index - length;
-  }
+  else if(index >= length) return index - length;
 
   //On retourne l'array
   return index;
@@ -77,9 +73,7 @@ function moveItemsHor(array, number) {
     index++;
 
     //Si il dépasse on reset
-    if(index >= array.length) {
-      index = 0;
-    }
+    if(index >= array.length) index = 0;
   }
 
   //Return output
@@ -97,7 +91,7 @@ function moveItemsVer(array, number) {
   const output = new Array(array.length);
 
   //Index
-  let index = getIndex(number, array.length) * -1;
+  const index = getIndex(number, array.length) * -1;
 
   //On boucle l'array
   for(let i = 0; i < array.length; ++i) {
